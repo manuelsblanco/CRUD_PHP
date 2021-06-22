@@ -10,6 +10,27 @@ $consulta = mysqli_query($conn,$query);
 
 $row = mysqli_fetch_array($consulta)
 
+
+
+?>
+
+<?php
+if(isset($_POST['update'])) {
+    $id = $_GET['id'];
+    $nombre   = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $edad     = $_POST['edad'];
+    $telefono = $_POST['tel'];
+    $genero   = $_POST['genero'];
+
+    $query = "UPDATE personas set nombre   = '$nombre',
+                                  apellido = '$apellido',
+                                  edad     = '$edad',
+                                  tel      = '$telefono',
+                                  genero   = '$genero' WHERE id = $id";
+    mysqli_query($conn,$query);
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>

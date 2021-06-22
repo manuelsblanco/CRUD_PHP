@@ -19,12 +19,12 @@
     <?php include("banner.php")?>
     <!--Esta linea de codigo llama al archivo banner.php y lo muestra en la pantalla-->
 
-    <table>
-<tbody>
-<tr>
-<!--Comienzo del formulario-->
-<td>
-<div>
+    <table style="width:100%">
+    <tbody>
+        <tr>
+        <!--Comienzo del formulario-->
+        <td>
+    <div>
         <h2>Ingrese los datos a guardar</h2>        
 
         <!--Creo el formulario-->
@@ -62,42 +62,45 @@
 <!--Fin del formulario-->
 <!--Cargo los datos-->
 <td>
-<table>
+<table style="border: solid #04AA6D 9px; border-radius: 15px;">
 <tbody>
 <tr>
-<th>ID</th>
-<th>Nombre</hd>
-<th>Apellido</hd>
-<th>Edad</th>
-<th>Telefono</th>
-<th>Genero</th>
+<th style="border: 3px solid black">ID</th>
+<th style="border: 3px solid black">Nombre</hd>
+<th style="border: 3px solid black">Apellido</hd>
+<th style="border: 3px solid black">Edad</th>
+<th style="border: 3px solid black">Telefono</th>
+<th style="border: 3px solid black">Genero</th>
+<th style="border: 3px solid black">Acciones</th>
 </tr>
 <tr>
-<!--Realizo la consulta-->
-<?php
-    $query = "SELECT * FROM `personas`";
-    $consulta = mysqli_query($conn, $query);
-    ?>
+
+    <!--Realizo la consulta-->
     <?php
-    while($row = mysqli_fetch_array($consulta)){
+        $query = "SELECT * FROM `personas`";
+        $consulta = mysqli_query($conn, $query);
         ?>
-        <tr>
-            <td> <?php echo $row['id']?> </td>
-            <td> <?php echo $row['Nombre']?> </td>
-            <td> <?php echo $row['Apellido']?> </td>
-            <td> <?php echo $row['Edad']?> </td>
-            <td> <?php echo $row['Tel']?> </td>
-            <td> <?php echo $row['Genero']?> </td>
-            <td> <a href="update.php?id=<?php echo $row['id']?>">Editar</a>            
-             <a href="delete.php?id=<?php echo $row['id']?>">Borrar</a></td>
-        </tr>
-    <?php
-    }
-    ?>
+        <?php
+        while($row = mysqli_fetch_array($consulta)){
+            ?>
+            <tr>
+                <td style="border: 3px solid black"> <?php echo $row['id']?> </td>
+                <td style="border: 3px solid black"> <?php echo $row['Nombre']?> </td>
+                <td style="border: 3px solid black"> <?php echo $row['Apellido']?> </td>
+                <td style="border: 3px solid black"> <?php echo $row['Edad']?> </td>
+                <td style="border: 3px solid black"> <?php echo $row['Tel']?> </td>
+                <td style="border: 3px solid black"> <?php echo $row['Genero']?> </td>
+                <td style="border: 3px solid black"> <a href="update.php?id=<?php echo $row['id']?>"><img src="images/editar.png" alt="Editar"></a>            
+                <a href="delete.php?id=<?php echo $row['id']?>"><img src="images/trash.png" alt="Eliminar"></a></td>
+            </tr>
+        <?php
+        }
+        ?>
+    <!--Realizo la consulta-->
 
     
 
-<!--Realizo la consulta-->
+
 </tr>
 </tbody>
 </table>
